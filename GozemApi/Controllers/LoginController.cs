@@ -106,8 +106,7 @@ namespace GozemApi.Controllers
                 {new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName) },
                 {new Claim(JwtRegisteredClaimNames.AuthTime, DateTime.UtcNow.ToString(CultureInfo.InvariantCulture)) },
                 {new Claim(JwtRegisteredClaimNames.Email, user.Email) },
-                {new Claim("profile_photo", user.ProfilePhoto ?? string.Empty) },
-                // {new Claim(ClaimTypes.Role, user.Roles.Aggregate((s1, s2) => string.Join(',', s1, s2))) }
+                {new Claim("profile_photo", user.ProfilePhoto ?? string.Empty) }
             };
 
             var jwtToken = JwtTokenGenerator.GenerateJwtToken(claims, _jwtSettings.SigningKey, _jwtSettings.TokenExpirationInDays, _jwtSettings.ValidAudience, issuer);
